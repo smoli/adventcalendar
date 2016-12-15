@@ -46,7 +46,7 @@ sap.ui.define(
 				oRm.writeAttribute("data-inactive", oControl.getInactive());
 			}
 			oRm.writeAttribute("data-bg-color", oControl.getColor());
-			oRm.writeAttribute("data-title", oControl.getTitle());
+			oRm.writeAttribute("data-title", oControl.getProperty("day") > today ? "" : oControl.getTitle());
 			oRm.write(">");
 			
 			oRm.write("<div class=\"content__block\">");
