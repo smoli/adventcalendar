@@ -2,6 +2,8 @@ sap.ui.define(
     ["sap/ui/core/Control"],
 	function(Control) {
 	"use strict";
+
+	var today = new Date().getDate();
 		
 	return Control.extend("de.blogspot.openui5.adventcalendar.control.Day", /** @lends de.blogspot.openui5.adventcalendar.control.Day **/ {
 		metadata: {
@@ -9,6 +11,10 @@ sap.ui.define(
 				color: {
 					type: "sap.ui.core.CSSColor",
 					defaultValue: "auto"
+				},
+				day: {
+					type: "int",
+					defaultValue: "25"
 				},
 				inactive: {
 					type: "boolean",
@@ -35,7 +41,8 @@ sap.ui.define(
 			oRm.writeControlData(oControl);
 			oRm.writeClasses();
 			oRm.writeStyles();
-			if (oControl.getInactive() === true) {
+
+			if (oControl.getInactive() === true || oControl.getProperty("day") > today) {
 				oRm.writeAttribute("data-inactive", oControl.getInactive());
 			}
 			oRm.writeAttribute("data-bg-color", oControl.getColor());
